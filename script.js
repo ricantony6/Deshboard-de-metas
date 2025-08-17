@@ -2,64 +2,84 @@
 const inputMeta = document.getElementById('nova-meta');
 const btnAdicionarMeta = document.getElementById('adicionar-meta');
 const listaMetas = document.getElementById('metas');
+const barraPreenchida = document.getElementById('barra-preenchida');
+const percentual = document.getElementById('percentual');
+
+// Função para atualizar a barra de progresso
+function atualizarBarraProgresso() {
+    const metas = listaMetas.querySelectorAll('li');
+
+    if (metas.length === 0) {
+        barraPreenchida.style.width = '0%';
+        percentual.textContent = '0%';
+        return;
+    }
+
+    let metasConcluidas = 0;
+    metas.forEach(li => {
+        const checkbox = li.querySelector('input[type="checkbox"]');
+        if (checkbox.checked) metasConcluidas++;
+    });
+
+    const percentagem = Math.round((metasConcluidas / metas.length) * 100);
+    barraPreenchida.style.width = percentagem + '%';
+    percentual.textContent = percentagem + '%';
+}
 
 // Função para adicionar meta
 function adicionarMeta() {
-    const metaTexto = inputMeta.value.trim(); // pega o valor e remove espaços
+    const metaTexto = inputMeta.value.trim();
 
-    if (metaTexto === '') { // verifica se o campo está vazio
+    if (metaTexto === '') {
         alert('Por favor, digite uma meta.');
         return;
     }
 
-    // Cria um novo <li>
     const li = document.createElement('li');
 
-    // Cria checkbox
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
 
-    // Cria span para o texto da meta
     const span = document.createElement('span');
     span.textContent = metaTexto;
 
-    // Risca o texto quando marcado
-    checkbox.addEventListener('change', function() {
+    const btnRemover = document.createElement('button');
+    btnRemover.textContent = 'Remover';
+    btnRemover.style.marginLeft = '10px';
+
+    // Evento do checkbox: risca texto e atualiza barra
+    checkbox.addEventListener('change', () => {
         if (checkbox.checked) {
             span.style.textDecoration = 'line-through';
-            span.style.color = '#7f8c8d'; 
+            span.style.color = '#7f8c8d';
         } else {
             span.style.textDecoration = 'none';
             span.style.color = 'black';
         }
+        atualizarBarraProgresso();
     });
 
-    // Botão para remover meta
-    const btnRemover = document.createElement('button');
-    btnRemover.textContent = 'Remover';
-    btnRemover.style.marginLeft = '10px';
+    // Evento do botão remover
     btnRemover.addEventListener('click', () => {
         listaMetas.removeChild(li);
+        atualizarBarraProgresso();
     });
 
-    // Monta o <li> com checkbox, texto e botão
+    // Monta o <li>
     li.appendChild(checkbox);
     li.appendChild(span);
     li.appendChild(btnRemover);
-
-    // Adiciona o item na lista
     listaMetas.appendChild(li);
 
     // Limpa o input
     inputMeta.value = '';
+
+    // Atualiza a barra ao adicionar
+    atualizarBarraProgresso();
 }
 
-// Evento de click no botão
+// Eventos
 btnAdicionarMeta.addEventListener('click', adicionarMeta);
-
-// Evento de Enter no input 
-inputMeta.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        adicionarMeta();
-    }
+inputMeta.addEventListener('keydown', event => {
+    if (event.key === 'Enter') adicionarMeta();
 });
