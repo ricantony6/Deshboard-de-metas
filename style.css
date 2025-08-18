@@ -14,12 +14,41 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  transition: background 0.3s, color 0.3s;
 }
 
 /* Título principal */
 h1 {
   margin-bottom: 20px;
   color: #2c3e50;
+}
+
+/* Cabeçalho */
+header {
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Botão Dark Mode fixo no canto superior direito da página */
+#toggle-darkmode {
+    position: fixed;      /* fixa o botão na tela */
+    top: 20px;            /* distância do topo */
+    right: 20px;          /* distância da direita */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;        /* garante que fique acima de outros elementos */
+    transition: background 0.3s;
+}
+
+#toggle-darkmode:hover {
+    background: #2980b9;
 }
 
 /* Seções (caixinhas brancas) */
@@ -31,15 +60,17 @@ section {
   margin-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 /* Input e botão */
 input {
   padding: 10px;
   width: 70%;
-   margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-right: 10px;
+  transition: background 0.3s, color 0.3s, border 0.3s;
 }
 
 button {
@@ -49,6 +80,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 button:hover {
@@ -58,7 +90,6 @@ button:hover {
 /* Lista de metas */
 ul {
   list-style: none;
-  margin-top: 10px;
 }
 
 li {
@@ -69,28 +100,19 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-li {
   opacity: 0;
-  animation: fadeIn 0.5s forwards;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
+  animation: fadeIn 0.3s forwards;
+  transition: background 0.3s, color 0.3s;
 }
 
 li span {
-   margin-left: 10px;
-   flex-grow: 1;
-   transition: color 0.3s, text-decoration 0.3s;
+  flex: 1;
+  margin-left: 10px;
+  transition: color 0.3s, text-decoration 0.3s;
 }
 
 li button {
   background: #e74c3c;
-  margin-left: 10px;
-  transition: background 0.3s;
-  cursor: pointer;
 }
 
 li button:hover {
@@ -98,27 +120,71 @@ li button:hover {
 }
 
 /* Barra de progresso */
-#barra-fundo {
-    width: 100%;
-    height: 25px;
-    background: #bdc3c7;
-    border-radius: 5px;
-    margin-top: 10px;
-    overflow: hidden;
+#barra {
+  width: 100%;
+  height: 25px;
+  background-color: #ecf0f1;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
 }
 
 #barra-preenchida {
-    height: 100%;
-    width: 0; 
-    background: linear-gradient(90deg, #4ac87f, #179a4e);
-    text-align: center;
-    line-height: 25px;
-    border-radius: 5px;
-    transition: width 0.3s ease;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  text-align: center;
+  color: white;
+  line-height: 25px;
+  transition: width 0.3s ease;
+  border-radius: 5px;
 }
 
 #percentual {
-    text-align: right;
-    margin-top: 5px;
-    font-weight: bold;
+  display: inline-block;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+/* Fade In animation */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background: #1e1e1e;
+    color: #ecf0f1;
+}
+
+body.dark-mode section {
+    background: #2c2c2c;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+body.dark-mode input {
+    background: #3a3a3a;
+    color: #ecf0f1;
+    border: 1px solid #555;
+}
+
+body.dark-mode li {
+    background: #3a3a3a;
+    color: #ecf0f1;
+}
+
+body.dark-mode li span {
+    color: #ecf0f1;
+}
+
+body.dark-mode #barra {
+    background-color: #555;
+}
+
+body.dark-mode #barra-preenchida {
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+}
+
+body.dark-mode li button {
+    background: #e74c3c;
 }

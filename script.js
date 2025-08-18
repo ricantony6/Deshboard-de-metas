@@ -4,6 +4,7 @@ const btnAdicionarMeta = document.getElementById('adicionar-meta');
 const listaMetas = document.getElementById('metas');
 const barraPreenchida = document.getElementById('barra-preenchida');
 const percentual = document.getElementById('percentual');
+const btnDarkMode = document.getElementById('toggle-darkmode');
 
 // Função para atualizar a barra de progresso
 function atualizarBarraProgresso() {
@@ -37,7 +38,7 @@ function adicionarMeta(metaTexto = inputMeta.value.trim(), concluida = false) {
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
-    checkbox.checked = concluida; // Define se a meta está concluída
+    checkbox.checked = concluida; // agora funciona
 
     const span = document.createElement('span');
     span.textContent = metaTexto;
@@ -51,9 +52,11 @@ function adicionarMeta(metaTexto = inputMeta.value.trim(), concluida = false) {
         if (checkbox.checked) {
             span.style.textDecoration = 'line-through';
             span.style.color = '#7f8c8d';
+            listaMetas.appendChild(li); // move para o final
         } else {
             span.style.textDecoration = 'none';
             span.style.color = 'black';
+            listaMetas.insertBefore(li, listaMetas.firstChild); // move para o começo
         }
         atualizarBarraProgresso();
         salvarMetas(); // Salva no localStorage
@@ -74,6 +77,7 @@ function adicionarMeta(metaTexto = inputMeta.value.trim(), concluida = false) {
 
     // Limpa o input
     inputMeta.value = '';
+    inputMeta.focus();
 
     // Atualiza barra e salva
     atualizarBarraProgresso();
@@ -108,5 +112,37 @@ function carregarMetas() {
     });
 }
 
-// Carregar as metas salvas quando a página é carregada
-window.addEventListener('load', carregarMetas);
+// Filtros de metas
+document.getElementById('filtrar-todas').addEventListener('click', () => {
+    listaMetas.querySelectorAll('li').forEach(li => li.style.display = 'flex');
+});
+
+document.getElementById('filtrar-concluidas').addEventListener('click', () => {
+    listaMetas.querySelectorAll('li').forEach(li => {
+        li.style.display = li.querySelector('input').checked ? 'flex' : 'none';
+    });
+});
+
+document.getElementById('filtrar-pendentes').addEventListener('click', () => {
+    listaMetas.querySelectorAll('li').forEach(li => {
+        li.style.display = !li.querySelector('input').checked ? 'flex' : 'none';
+    });
+});
+
+// Dark Mode
+btnDarkMode.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    if(document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('tema', 'dark');
+    } else {
+        localStorage.setItem('tema', 'light');
+    }
+});
+
+// Carregar preferências e metas ao iniciar
+window.addEventListener('load', () => {
+    carregarMetas();
+    if(localStorage.getItem('tema') === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+});

@@ -9,30 +9,38 @@
 <body>
     <header>
         <h1>Meu Dashboard de Metas</h1>
+        <button id="toggle-darkmode">Dark Mode</button>
     </header>
     <main>
         <!--Formulário para cadastrar metas-->
-    <section id="cadastro-meta">
-        <h2>Adicionar Meta</h2>
-        <input type="text" id="nova-meta" placeholder="Digite sua meta" autocomplete="off">
-        <button id="adicionar-meta">Adicionar</button>
-    </section>
+        <section id="cadastro-meta">
+            <h2>Adicionar Meta</h2>
+            <input type="text" id="nova-meta" placeholder="Digite sua meta">
+            <button id="adicionar-meta">Adicionar</button>
+        </section>
 
-    <!--Lista de metas-->
-    <section id="lista-metas">
-        <h2>Minhas Metas</h2>
-        <ul id="metas"></ul>
-    </section>
+        <!--Barra de progresso-->
+        <section id="barra-progresso">
+            <h2>Progresso das Metas</h2>
+            <div id="barra">
+                <div id="barra-preenchida"></div>
+            </div>
+            <span id="percentual">0%</span>
+        </section>
 
-    <section id="progresso">
-        <h2>Progresso</h2>
-        <div id="barra-fundo">
-            <div id="barra-preenchida"></div>
-        </div>
-        <p id="percentual">0%</p>
-    </section>
+        <!--Filtros de metas-->
+        <section id="filtros">
+            <button id="filtrar-todas">Todas</button>
+            <button id="filtrar-concluidas">Concluídas</button>
+            <button id="filtrar-pendentes">Pendentes</button>
+        </section>
+
+        <!--Lista de metas-->
+        <section id="lista-metas">
+            <h2>Minhas Metas</h2>
+            <ul id="metas"></ul>
+        </section>
     </main>
     <script src="script.js"></script>
-    
 </body>
 </html>
