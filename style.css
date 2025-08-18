@@ -71,14 +71,30 @@ li {
   justify-content: space-between;
 }
 
+li {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
 li span {
-  margin-left: 10px;
-    flex-grow: 1;
+   margin-left: 10px;
+   flex-grow: 1;
+   transition: color 0.3s, text-decoration 0.3s;
 }
 
 li button {
+  background: #e74c3c;
   margin-left: 10px;
+  transition: background 0.3s;
   cursor: pointer;
+}
+
+li button:hover {
+  background: #c0392b;
 }
 
 /* Barra de progresso */
@@ -94,7 +110,9 @@ li button {
 #barra-preenchida {
     height: 100%;
     width: 0; 
-    background: #2ecc71;
+    background: linear-gradient(90deg, #4ac87f, #179a4e);
+    text-align: center;
+    line-height: 25px;
     border-radius: 5px;
     transition: width 0.3s ease;
 }

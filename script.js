@@ -27,9 +27,7 @@ function atualizarBarraProgresso() {
 }
 
 // Função para adicionar meta
-function adicionarMeta() {
-    const metaTexto = inputMeta.value.trim();
-
+function adicionarMeta(metaTexto = inputMeta.value.trim(), concluida = false) {
     if (metaTexto === '') {
         alert('Por favor, digite uma meta.');
         return;
@@ -39,6 +37,7 @@ function adicionarMeta() {
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
+    checkbox.checked = concluida; // Define se a meta está concluída
 
     const span = document.createElement('span');
     span.textContent = metaTexto;
@@ -57,12 +56,14 @@ function adicionarMeta() {
             span.style.color = 'black';
         }
         atualizarBarraProgresso();
+        salvarMetas(); // Salva no localStorage
     });
 
     // Evento do botão remover
     btnRemover.addEventListener('click', () => {
         listaMetas.removeChild(li);
         atualizarBarraProgresso();
+        salvarMetas(); // Atualiza no localStorage
     });
 
     // Monta o <li>
@@ -74,12 +75,38 @@ function adicionarMeta() {
     // Limpa o input
     inputMeta.value = '';
 
-    // Atualiza a barra ao adicionar
+    // Atualiza barra e salva
     atualizarBarraProgresso();
+    salvarMetas();
 }
 
 // Eventos
-btnAdicionarMeta.addEventListener('click', adicionarMeta);
+btnAdicionarMeta.addEventListener('click', () => adicionarMeta());
 inputMeta.addEventListener('keydown', event => {
     if (event.key === 'Enter') adicionarMeta();
 });
+
+// Salvar metas no localStorage
+function salvarMetas() {
+    const metas = [];
+    const lista = listaMetas.querySelectorAll('li');
+    lista.forEach(li => {
+        const checkbox = li.querySelector('input[type="checkbox"]');
+        metas.push({
+            texto: li.querySelector('span').textContent,
+            concluida: checkbox.checked
+        });
+    });
+    localStorage.setItem('metas', JSON.stringify(metas));
+}
+
+// Carregar metas do localStorage
+function carregarMetas() {
+    const metasSalvas = JSON.parse(localStorage.getItem('metas')) || [];
+    metasSalvas.forEach(meta => {
+        adicionarMeta(meta.texto, meta.concluida);
+    });
+}
+
+// Carregar as metas salvas quando a página é carregada
+window.addEventListener('load', carregarMetas);
