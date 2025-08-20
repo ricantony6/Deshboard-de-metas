@@ -34,9 +34,9 @@ header {
 
 /* Botão Dark Mode fixo no canto superior direito da página */
 #toggle-darkmode {
-    position: fixed;      /* fixa o botão na tela */
-    top: 20px;            /* distância do topo */
-    right: 20px;          /* distância da direita */
+    position: fixed;      
+    top: 10px;          
+    right: 10px;          
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
