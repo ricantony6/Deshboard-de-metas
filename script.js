@@ -44,7 +44,7 @@ function adicionarMeta(metaTexto = inputMeta.value.trim(), concluida = false) {
     span.textContent = metaTexto;
 
     const btnRemover = document.createElement('button');
-    btnRemover.textContent = 'Remover';
+    btnRemover.innerHTML = '<i class="bi bi-trash"></i>'; // Ícone de lixeira
     btnRemover.style.marginLeft = '10px';
 
     // Evento do checkbox: risca texto e atualiza barra

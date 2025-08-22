@@ -54,7 +54,7 @@ header {
 /* Seções (caixinhas brancas) */
 section {
   background: white;
-  width: 90%;
+  width: 80%;
   max-width: 500px;
   padding: 15px;
   margin-bottom: 20px;
@@ -66,7 +66,7 @@ section {
 /* Input e botão */
 input {
   padding: 10px;
-  width: 70%;
+  width: 65%;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-right: 10px;
@@ -105,9 +105,18 @@ li {
   transition: background 0.3s, color 0.3s;
 }
 
+li input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #3498db; /* azul bonito */
+  cursor: pointer;
+}
+
 li span {
   flex: 1;
   margin-left: 10px;
+  font-size: 20px; /* aumenta fonte */
+  font-weight: 500;
   transition: color 0.3s, text-decoration 0.3s;
 }
 
@@ -118,6 +127,7 @@ li button {
 li button:hover {
   background: #c0392b;
 }
+
 
 /* Barra de progresso */
 #barra {
@@ -146,6 +156,26 @@ li button:hover {
   font-weight: bold;
 }
 
+/*filtros */
+#filtros {
+  display: flex;
+  justify-content: center;
+  gap: 6px; /* espaço entre botões */
+  margin: 10px 0;
+}
+
+#filtros button {
+  padding: 5px 2px; /* tamanho do botão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
 /* Fade In animation */
 @keyframes fadeIn {
   to { opacity: 1; }
@@ -169,7 +199,7 @@ body.dark-mode input {
 }
 
 body.dark-mode li {
-    background: #3a3a3a;
+    background: #555555;
     color: #ecf0f1;
 }
 
