@@ -1,42 +1,35 @@
-# Dashboard de Metas Pessoais
+<h1 align="center"> 📊 Dashboard de Metas Pessoais </h1>
 
-Um aplicativo simples para gerenciar suas metas pessoais, com interface moderna, barra de progresso, filtros e suporte a Dark Mode.
+<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+  <img src="/imagens/dashboard-principal.png" alt="Dashboard de Metas - Tela Principal" width="400"/>
+  <img src="/imagens/dashboard-darkmode.png" alt="Dashboard de Metas - Dark Mode" width="400"/>
+</div>
 
----
+## 🚀 Tecnologias
 
-## Pré-visualização
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-![Dashboard de Metas - Tela Principal](/imagens/dashboard-principal.png)
-![Dashboard de Metas - Dark Mode](/imagens/dashboard-darkmode.png)
-
-> **Dica:** coloque suas imagens dentro de uma pasta `imagens` no repositório.
-
----
-
-## Funcionalidades
-
-- Adicionar novas metas.
-- Marcar metas como concluídas ou pendentes.
-- Remover metas.
-- Barra de progresso que mostra o percentual de metas concluídas.
-- Filtros: Todas | Concluídas | Pendentes
-- Dark Mode com persistência no navegador.
-- Layout responsivo e padronizado.
-
----
-
-## Tecnologias Utilizadas
-
-- HTML5
-- CSS3 (com Dark Mode e animações)
-- JavaScript (localStorage para salvar metas e tema)
+- HTML5  
+- CSS3 (com Dark Mode e animações)  
+- JavaScript (localStorage para salvar metas e tema)  
 - Bootstrap 5 (ícones e estilos)
 
----
 
-## Como Rodar Localmente
+## ✨ Funcionalidades
 
-1. Clone o repositório:
+- ➕ Adicionar novas metas  
+- ✅ Marcar metas como concluídas ou pendentes  
+- ❌ Remover metas  
+- 📊 Barra de progresso que mostra o percentual de metas concluídas  
+- 🔍 Filtros: Todas | Concluídas | Pendentes  
+- 🌙 Dark Mode com persistência no navegador  
+- 📱 Layout responsivo e padronizado
 
-```bash
-git clone https://github.com/SEU_USUARIO/NOME_REPOSITORIO.git
+
+## 💻 Projeto
+
+O **Dashboard de Metas Pessoais** é um aplicativo para gerenciar suas metas de forma prática e visual, com barra de progresso, filtros e suporte a Dark Mode. Ideal para acompanhar suas metas diárias e pessoais.
+
+- [Acesse o projeto finalizado, online](https://ricantony6.github.io/MetaDashboard/)
+
+♥ Ricardo Antonio Rodrigues
