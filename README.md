@@ -6,8 +6,8 @@ Um aplicativo simples para gerenciar suas metas pessoais, com interface moderna,
 
 ## Pré-visualização
 
-![Dashboard de Metas - Tela Principal](assets/dashboard-principal.png)
-![Dashboard de Metas - Dark Mode](assets/dashboard-darkmode.png)
+![Dashboard de Metas - Tela Principal](/imagens/dashboard-principal.png)
+![Dashboard de Metas - Dark Mode](/imagens/dashboard-darkmode.png)
 
 > **Dica:** coloque suas imagens dentro de uma pasta `imagens` no repositório.
 
